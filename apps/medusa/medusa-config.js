@@ -1,14 +1,17 @@
-import { loadEnv, defineConfig, Modules } from "@medusajs/framework/utils"
+const { loadEnv, defineConfig } = require("@medusajs/framework/utils")
 
 loadEnv(process.env.NODE_ENV || "development", process.cwd())
 
 const isRedisAvailable = Boolean(process.env.REDIS_URL)
 
-export default defineConfig({
+module.exports = defineConfig({
+  admin: {
+    disable: process.env.MEDUSA_ADMIN_DISABLED === "true",
+  },
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL || "postgres://postgres:postgres@localhost:5432/medusa_db",
     redisUrl: process.env.REDIS_URL,
-    workerMode: (process.env.MEDUSA_WORKER_MODE as "shared" | "worker" | "server") || "shared",
+    workerMode: process.env.MEDUSA_WORKER_MODE || "shared",
     http: {
       storeCors:
         process.env.STORE_CORS ||

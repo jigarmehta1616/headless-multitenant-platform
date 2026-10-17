@@ -1,5 +1,5 @@
 import { MedusaService } from "@medusajs/framework/utils"
-import { WebhookDeliveryLog } from "./models/webhook-delivery-log.js"
+import { WebhookDeliveryLog } from "./models/webhook-delivery-log"
 
 export default class WebhookLogModuleService extends MedusaService({
   WebhookDeliveryLog,

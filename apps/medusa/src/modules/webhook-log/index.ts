@@ -1,5 +1,5 @@
 import { Module } from "@medusajs/framework/utils"
-import WebhookLogModuleService from "./service.js"
+import WebhookLogModuleService from "./service"
 
 export const WEBHOOK_LOG_MODULE = "webhookLogModuleService"
 

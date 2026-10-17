@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest"
-import { GET } from "../src/api/health/route.js"
+import { GET } from "../src/api/health/route"
 
 describe("Health Check Endpoint", () => {
   it("returns 200 OK with status healthy and worker mode", async () => {

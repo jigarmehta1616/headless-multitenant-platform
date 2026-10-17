@@ -1,6 +1,6 @@
 import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
-import { WEBHOOK_LOG_MODULE } from "../../../../modules/webhook-log/index.js"
-import { dispatchOutboundWebhookWorkflow } from "../../../../workflows/outbound-webhook.js"
+import { WEBHOOK_LOG_MODULE } from "../../../../modules/webhook-log/index"
+import { dispatchOutboundWebhookWorkflow } from "../../../../workflows/outbound-webhook"
 
 /**
  * Admin API: Manually trigger replay for a webhook delivery log entry

@@ -2,7 +2,7 @@
 // Reason: Outbound webhook event subscriber dispatcher for core domain events.
 
 import type { SubscriberArgs, SubscriberConfig } from "@medusajs/framework"
-import { dispatchOutboundWebhookWorkflow } from "../workflows/outbound-webhook.js"
+import { dispatchOutboundWebhookWorkflow } from "../workflows/outbound-webhook"
 import crypto from "node:crypto"
 
 /**

@@ -3,7 +3,7 @@
 
 import { createStep, createWorkflow, StepResponse, WorkflowResponse } from "@medusajs/framework/workflows-sdk"
 import crypto from "node:crypto"
-import { WEBHOOK_LOG_MODULE } from "../modules/webhook-log/index.js"
+import { WEBHOOK_LOG_MODULE } from "../modules/webhook-log/index"
 
 export interface OutboundWebhookInput {
   eventId: string
