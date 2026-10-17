@@ -1,0 +1,74 @@
+{
+  "$schema": "../../packages/theme/src/theme.schema.json",
+  "brand": {
+    "name": "Vanguard Wholesale",
+    "slug": "vanguard-wholesale",
+    "salesChannelEnv": "NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY"
+  },
+  "colors": {
+    "primary": "#0f172a",
+    "secondary": "#f4f4f5",
+    "surface": "#ffffff",
+    "text": "#09090b",
+    "accent": "#0284c7"
+  },
+  "typography": {
+    "heading": "Roboto",
+    "body": "Inter",
+    "scale": "1.25"
+  },
+  "spacing": {
+    "base": 4,
+    "sectionY": 96,
+    "containerMax": 1280
+  },
+  "radius": {
+    "sm": 4,
+    "md": 8,
+    "lg": 16
+  },
+  "grid": {
+    "productColumns": {
+      "base": 2,
+      "md": 3,
+      "xl": 4
+    },
+    "gap": 24
+  },
+  "features": {
+    "ageGate": false,
+    "wishlist": false,
+    "quickOrder": true,
+    "wholesaleGated": true
+  },
+  "content": {
+    "nav": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "Catalog",
+        "href": "/products"
+      }
+    ],
+    "footer": [
+      {
+        "label": "Terms of Service",
+        "href": "/terms"
+      },
+      {
+        "label": "Privacy Policy",
+        "href": "/privacy"
+      }
+    ],
+    "banners": [
+      {
+        "id": "welcome-banner",
+        "text": "Welcome to VANGUARD-WHOLESALE official store",
+        "type": "promo",
+        "dismissible": true
+      }
+    ]
+  }
+}

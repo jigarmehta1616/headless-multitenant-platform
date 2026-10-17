@@ -1,0 +1,100 @@
+services:
+  # 1. Medusa v2 Server Instance (Admin Dashboard & Store APIs)
+  - type: web
+    name: medusa-server
+    runtime: node
+    plan: standard
+    region: oregon
+    rootDir: .
+    buildCommand: pnpm install --no-frozen-lockfile && pnpm --filter medusa build
+    preDeployCommand: pnpm --filter medusa medusa db:migrate
+    startCommand: pnpm --filter medusa medusa start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MEDUSA_WORKER_MODE
+        value: server
+      - key: PORT
+        value: 9000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: medusa-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: medusa-redis
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: COOKIE_SECRET
+        generateValue: true
+      - key: STORE_CORS
+        sync: false
+      - key: ADMIN_CORS
+        sync: false
+      - key: AUTH_CORS
+        sync: false
+      - fromGroup: medusa-production-env
+
+  # 2. Medusa v2 Background Worker Instance (Workflows, Scheduled Jobs, Subscribers)
+  - type: worker
+    name: medusa-worker
+    runtime: node
+    plan: standard
+    region: oregon
+    rootDir: .
+    buildCommand: pnpm install --no-frozen-lockfile && pnpm --filter medusa build
+    startCommand: pnpm --filter medusa medusa start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MEDUSA_WORKER_MODE
+        value: worker
+      - key: DATABASE_URL
+        fromDatabase:
+          name: medusa-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: medusa-redis
+          property: connectionString
+      - key: JWT_SECRET
+        fromService:
+          type: web
+          name: medusa-server
+          envVarKey: JWT_SECRET
+      - key: COOKIE_SECRET
+        fromService:
+          type: web
+          name: medusa-server
+          envVarKey: COOKIE_SECRET
+      - fromGroup: medusa-production-env
+
+databases:
+  # Managed PostgreSQL 16
+  - name: medusa-postgres
+    plan: standard
+    region: oregon
+    postgresMajorVersion: 16
+    databaseName: medusa_db
+    user: medusa_user
+
+# Managed Redis 7 for distributed cache, event-bus, and workflow locking
+redis:
+  - name: medusa-redis
+    plan: standard
+    region: oregon
+    maxmemoryPolicy: allkeys-lru
+
+envVarGroups:
+  - name: medusa-production-env
+    envVars:
+      - key: OUTBOUND_WEBHOOK_SECRET
+        generateValue: true
+      - key: OUTBOUND_WEBHOOK_URL
+        sync: false

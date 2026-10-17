@@ -1,0 +1,17 @@
+# Code Owners for Protected Zones and Infrastructure
+
+# Infrastructure & CI
+/render.yaml                  @platform-lead
+/docker-compose.yml           @platform-lead
+/.github/workflows/           @platform-lead
+
+# Protected Commerce Zones (Requires Lead Review)
+/packages/commerce/           @platform-lead
+/apps/medusa/src/workflows/   @platform-lead
+/apps/medusa/src/subscribers/ @platform-lead
+/apps/medusa/src/modules/     @platform-lead
+
+# Shared Packages
+/packages/theme/              @frontend-lead
+/packages/ui/                 @frontend-lead
+/packages/config/             @platform-lead

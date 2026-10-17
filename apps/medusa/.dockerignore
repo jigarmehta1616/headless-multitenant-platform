@@ -1,0 +1,9 @@
+node_modules
+.medusa
+dist
+build
+.git
+.env*
+!brand.env.example
+*.log
+coverage

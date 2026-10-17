@@ -1,0 +1,320 @@
+{
+  "$ref": "#/definitions/ThemeConfig",
+  "definitions": {
+    "ThemeConfig": {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "brand": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "slug": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            },
+            "salesChannelEnv": {
+              "type": "string",
+              "default": "NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY"
+            },
+            "description": {
+              "type": "string"
+            },
+            "supportEmail": {
+              "type": "string",
+              "format": "email"
+            }
+          },
+          "required": [
+            "name",
+            "slug"
+          ],
+          "additionalProperties": false
+        },
+        "colors": {
+          "type": "object",
+          "properties": {
+            "primary": {
+              "type": "string",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
+            },
+            "secondary": {
+              "type": "string",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
+            },
+            "surface": {
+              "type": "string",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
+            },
+            "text": {
+              "type": "string",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
+            },
+            "accent": {
+              "type": "string",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
+            },
+            "muted": {
+              "type": "string",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "default": "#6b7280"
+            },
+            "border": {
+              "type": "string",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "default": "#e5e7eb"
+            },
+            "error": {
+              "type": "string",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "default": "#ef4444"
+            },
+            "success": {
+              "type": "string",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "default": "#22c55e"
+            }
+          },
+          "required": [
+            "primary",
+            "secondary",
+            "surface",
+            "text",
+            "accent"
+          ],
+          "additionalProperties": false
+        },
+        "typography": {
+          "type": "object",
+          "properties": {
+            "heading": {
+              "type": "string",
+              "minLength": 1
+            },
+            "body": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scale": {
+              "type": "string",
+              "default": "1.25"
+            }
+          },
+          "required": [
+            "heading",
+            "body"
+          ],
+          "additionalProperties": false
+        },
+        "spacing": {
+          "type": "object",
+          "properties": {
+            "base": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "sectionY": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "containerMax": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "base",
+            "sectionY",
+            "containerMax"
+          ],
+          "additionalProperties": false
+        },
+        "radius": {
+          "type": "object",
+          "properties": {
+            "sm": {
+              "type": "number",
+              "minimum": 0
+            },
+            "md": {
+              "type": "number",
+              "minimum": 0
+            },
+            "lg": {
+              "type": "number",
+              "minimum": 0
+            },
+            "full": {
+              "type": "number",
+              "minimum": 0,
+              "default": 9999
+            }
+          },
+          "required": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "additionalProperties": false
+        },
+        "grid": {
+          "type": "object",
+          "properties": {
+            "productColumns": {
+              "type": "object",
+              "properties": {
+                "base": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4
+                },
+                "md": {
+                  "type": "integer",
+                  "minimum": 2,
+                  "maximum": 6
+                },
+                "xl": {
+                  "type": "integer",
+                  "minimum": 2,
+                  "maximum": 8
+                }
+              },
+              "required": [
+                "base",
+                "md",
+                "xl"
+              ],
+              "additionalProperties": false
+            },
+            "gap": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "productColumns",
+            "gap"
+          ],
+          "additionalProperties": false
+        },
+        "features": {
+          "type": "object",
+          "properties": {
+            "ageGate": {
+              "type": "boolean",
+              "default": false
+            },
+            "wishlist": {
+              "type": "boolean",
+              "default": true
+            },
+            "quickOrder": {
+              "type": "boolean",
+              "default": false
+            },
+            "wholesaleGated": {
+              "type": "boolean",
+              "default": false
+            },
+            "reviews": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "content": {
+          "type": "object",
+          "properties": {
+            "nav": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "href": {
+                    "type": "string"
+                  },
+                  "isExternal": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "label",
+                  "href"
+                ],
+                "additionalProperties": false
+              },
+              "default": []
+            },
+            "footer": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ThemeConfig/properties/content/properties/nav/items"
+              },
+              "default": []
+            },
+            "banners": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "href": {
+                    "type": "string"
+                  },
+                  "dismissible": {
+                    "type": "boolean",
+                    "default": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "info",
+                      "warning",
+                      "promo"
+                    ],
+                    "default": "promo"
+                  }
+                },
+                "required": [
+                  "id",
+                  "text"
+                ],
+                "additionalProperties": false
+              },
+              "default": []
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "brand",
+        "colors",
+        "typography",
+        "spacing",
+        "radius",
+        "grid",
+        "features",
+        "content"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

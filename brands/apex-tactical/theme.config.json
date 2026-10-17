@@ -1,0 +1,74 @@
+{
+  "$schema": "../../packages/theme/src/theme.schema.json",
+  "brand": {
+    "name": "Apex Tactical",
+    "slug": "apex-tactical",
+    "salesChannelEnv": "NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY"
+  },
+  "colors": {
+    "primary": "#1c1917",
+    "secondary": "#f4f4f5",
+    "surface": "#ffffff",
+    "text": "#09090b",
+    "accent": "#ea580c"
+  },
+  "typography": {
+    "heading": "Chakra Petch",
+    "body": "Inter",
+    "scale": "1.25"
+  },
+  "spacing": {
+    "base": 4,
+    "sectionY": 96,
+    "containerMax": 1280
+  },
+  "radius": {
+    "sm": 4,
+    "md": 8,
+    "lg": 16
+  },
+  "grid": {
+    "productColumns": {
+      "base": 2,
+      "md": 3,
+      "xl": 4
+    },
+    "gap": 24
+  },
+  "features": {
+    "ageGate": true,
+    "wishlist": true,
+    "quickOrder": false,
+    "wholesaleGated": false
+  },
+  "content": {
+    "nav": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "Catalog",
+        "href": "/products"
+      }
+    ],
+    "footer": [
+      {
+        "label": "Terms of Service",
+        "href": "/terms"
+      },
+      {
+        "label": "Privacy Policy",
+        "href": "/privacy"
+      }
+    ],
+    "banners": [
+      {
+        "id": "welcome-banner",
+        "text": "Welcome to APEX-TACTICAL official store",
+        "type": "promo",
+        "dismissible": true
+      }
+    ]
+  }
+}

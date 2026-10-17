@@ -1,0 +1,18 @@
+---
+description: Zone rules separating SAFE marketing editing from PROTECTED commerce zones
+globs: **/*
+alwaysApply: true
+---
+
+# Protected vs Safe Zones Rules
+
+1. **Protected Zones** (`packages/commerce/**`, `apps/medusa/src/workflows/**`, `apps/medusa/src/subscribers/**`, `apps/storefront-*/src/middleware.ts`):
+   - Every file must have the header: `// PROTECTED ZONE: DO NOT EDIT WITHOUT REVIEW. [Reason]`
+   - Do NOT edit or refactor protected commerce, cart, checkout, or auth logic without explicit human approval.
+
+2. **Safe Zones** (`brands/**`, `apps/storefront-*/src/sections/**`, `apps/storefront-*/src/content/**`):
+   - You may freely edit marketing copy, theme configs, and section components.
+   - You must NOT import `@medusajs/js-sdk` directly in safe zones. Always consume `@platform/commerce` and `@platform/ui`.
+
+3. **Validation**:
+   - Run `pnpm ci:guard` and `pnpm brand:validate` to ensure invariants remain intact.
